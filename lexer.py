@@ -34,19 +34,22 @@ def lex(input_code, token_expressions):
         pos = match.end(0)
     return tokens
 
-
-if __name__ == '__main__':
+def main():
     if len(sys.argv) != 2:
         print("usage: python3 lexer.py filename")
         sys.exit(1)
-    # opern file    
+    # open file    
     filename = sys.argv[1]
     file = open(filename)
     input_code = file.read()
     file.close()
     # change all file content to lowercase for tokenize
     input_code = input_code.lower()
+    # call lexer function
     tokens = lex(input_code, lex_tokens.token_expressions)
     # print list of tokens
     for token in tokens:
         print(token)
+
+if __name__ == '__main__':
+    main()
