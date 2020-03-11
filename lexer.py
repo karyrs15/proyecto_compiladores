@@ -2,26 +2,36 @@ import sys
 import re
 import lex_tokens
 
+# lexer function to tokenize the input code
 def lex(input_code, token_expressions):
+    # pos tracks position in the input_code
     pos = 0
     tokens = []
+    # while is not EOF
     while pos < len(input_code):
         match = None
+        # check every token_expression to find which match the input at pos
         for token_expr in token_expressions:
+            # recover pattern and tag for every token expression
             pattern, tag = token_expr
+            # compile the pattern of token_expr into a regular expression object
             regex = re.compile(pattern)
+            # check if input_code matchs the reg expr object starting at pos
             match = regex.match(input_code, pos)
             if match:
+                # returns the entire match
                 text = match.group(0)
+                # if tag is different than None save it, if not, pass it
                 if tag:
+                    # store token into the list
                     token = (text, tag)
                     tokens.append(token)
                 break
         if not match:
-            sys.stderr.write("Illegal character: %s\n" % input_code[pos])
+            print("Illegal character: %s\n" %(input_code[pos]))
             sys.exit(1)
-        else:
-            pos = match.end(0)
+        # update pos with the index of the end of the entire last match
+        pos = match.end(0)
     return tokens
 
 
