@@ -1,3 +1,7 @@
+'''
+    Autor: Karina Reyes 
+'''
+
 import lexer
 
 # reserved words

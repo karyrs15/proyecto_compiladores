@@ -1,3 +1,7 @@
+'''
+    Autor: Karina Reyes 
+'''
+
 import sys
 import re
 import lex_tokens
