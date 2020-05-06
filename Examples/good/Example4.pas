@@ -1,9 +1,9 @@
 Program Example4;
-Var 
-	surname: String;
- 
 Const 
 	name = 'Victor';
+	
+Var 
+	surname: String;
      
 Begin
 	Writeln('Enter your surname:');

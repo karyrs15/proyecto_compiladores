@@ -1,0 +1,7 @@
+0,program,shift,2
+1,;,shift,3
+2,identifier,shift,4
+3,.,reduce,7
+3,constant,shift,7
+3,var,reduce,7
+3,begin,reduce,7

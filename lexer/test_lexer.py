@@ -12,7 +12,7 @@ if __name__ == '__main__':
         sys.exit(1)
     for i in range(8):
         # open every file in Examples folder
-        filename = ".\Examples\Example" + str(i + 1) + ".pas"
+        filename = "..\Examples\good\Example" + str(i + 1) + ".pas"
         file = open(filename)
         print("\n\n----- Opening file: " + filename + " -----\n")
         input_code = file.read()
