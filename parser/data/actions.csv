@@ -165,7 +165,7 @@
 54,number,reduce,67
 54,+,shift,59
 54,-,shift,60
-54,not,shift,67
+54,not,reduce,67
 55,end,shift,78
 56,then,shift,79
 57,;,reduce,63
@@ -258,7 +258,7 @@
 81,number,reduce,67
 81,+,shift,59
 81,-,shift,60
-81,not,shift,67
+81,not,reduce,67
 82,;,reduce,78
 82,identifier,reduce,78
 82,(,reduce,78
