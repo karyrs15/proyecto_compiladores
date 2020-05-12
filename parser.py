@@ -1,5 +1,50 @@
 import sys
+import csv
 import lexer 
+
+class Action:
+    def __init__(self, type, new_item):
+        self.tye = type
+        self.new_item = new_item
+
+def loadActionsTable():
+    actions = {}
+
+    for i in range(148):
+        actions[str(i)] = {}
+
+    with open("./data/actions.csv") as csvfile:
+        csvreader = csv.reader(csvfile, delimiter = ',')
+        for row in csvreader:
+            # print("item: ", row[0])
+            # print("terminal:", row[1])
+            # print("action type: ", row[2])
+            # print("new item: ", row[3])
+            action = Action(row[2], row[3])
+            aux = {row[1] : action}
+            actions[row[0]].update(aux)
+
+    print(actions)
+    
+def loadGoToTable():
+    gotos = {}
+
+    for i in range(147):
+        gotos[str(i)] = {}
+
+    with open("./data/gotos.csv") as csvfile:
+        csvreader = csv.reader(csvfile, delimiter = ',')
+        for row in csvreader:
+            # print("item: ", row[0])
+            # print("terminal:", row[1])
+            # print("new item: ", row[2])
+            aux = {row[1] : row[2]}
+            gotos[row[0]].update(aux)
+
+    print(gotos)
+
+def parse():
+    pass
 
 def main():
     if len(sys.argv) != 2:
@@ -19,4 +64,6 @@ def main():
         print(token)
 
 if __name__ == '__main__':
-    main()
+    # main()
+    # loadActionsTable()
+    loadGoToTable()
