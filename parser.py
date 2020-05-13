@@ -33,7 +33,7 @@ def loadGoToTable():
         gotos[str(i)] = {}
 
     with open("./data/gotos.csv") as csvfile:
-        csvreader = csv.reader(csvfile, delimiter = ',')
+        csvreader = csv.reader(csvfile, delimiter = ' ')
         for row in csvreader:
             # print("item: ", row[0])
             # print("terminal:", row[1])
