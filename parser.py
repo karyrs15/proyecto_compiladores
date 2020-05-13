@@ -14,7 +14,7 @@ def loadActionsTable():
         actions[str(i)] = {}
 
     with open("./data/actions.csv") as csvfile:
-        csvreader = csv.reader(csvfile, delimiter = ',')
+        csvreader = csv.reader(csvfile, delimiter = ' ')
         for row in csvreader:
             # print("item: ", row[0])
             # print("terminal:", row[1])
@@ -65,5 +65,5 @@ def main():
 
 if __name__ == '__main__':
     # main()
-    # loadActionsTable()
-    loadGoToTable()
+    loadActionsTable()
+    # loadGoToTable()
