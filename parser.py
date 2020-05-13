@@ -46,6 +46,12 @@ def loadGoToTable():
     # print(gotos)
     return gotos
 
+def display(stack, symbols, token, action):
+    print("stack: ", stack)
+    print("symbols: ", symbols)
+    print("token: ", token)
+    print("action: {} {}".format(action.type, action.new_item))
+
 def parse(input):
     # fill actions and gotos
     actions = loadActionsTable()
@@ -65,24 +71,46 @@ def parse(input):
     error = False
 
     stack.append("0")
-    
-    # print(tokens)
-    # ele = tokens.pop()
-    # print("Pop: ", ele)
-    # print(tokens)
-    # print("value: ", ele[1])
 
-    # print(actions["4"]["."].type)
-    # print(gotos)
+    while not(accepted) and not(error):
+        # get stack peek
+        actual_item = str(stack[-1])
+        # get actual token (the first in the input)
+        input_token = str(tokens.pop()[1])
+        # get action object
+        action = actions.get(actual_item).get(input_token)
+        
+        display(stack, symbols, input_token, action)
+        if action == None:
+            error = True
+        else:
+            if action.type == "shift":
+                symbols.push(input_token)
+                stack.push(action.new_item)
 
-    # print(productions[1])
+                display(stack, symbols, input_token, action)
+            elif action.type == "reduce":
+                prod_length = list(productions[str(action.new_item)])[0]
+                prod_head = productions[str(action.new_item)][prod_length]
 
-    # while not(accepted) and not(error):
-    #     actual_item = stack[-1]
+                for i in range(prod_length):
+                    stack.pop()
+                    symbols.pop()
 
+                symbols.push(str(prod_head))
+
+                goto_result = gotos.get(str(stack[-1])).get(str(symbols[-1]))
+                stack.push(str(goto_result))
+
+                display(stack, symbols, input_token, action)
+            elif action.type == "accepted":
+                accepted = True
+
+    if accepted:
+        print("ACCEPTED")
+    else:
+        print("ERROR")
                 
-
-    
 
 def main():
     if len(sys.argv) != 2:

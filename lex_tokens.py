@@ -5,7 +5,7 @@
 import lexer
 
 # reserved words
-PROGRAM     = 'PROGRAM'
+PROGRAM     = 'program'
 CONST       = 'CONST'
 VAR         = 'VAR'
 BEGIN       = 'BEGIN'
