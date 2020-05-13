@@ -50,7 +50,7 @@ def display(stack, symbols, token, action):
     print("stack: ", stack)
     print("symbols: ", symbols)
     print("token: ", token)
-    print("action: {} {}".format(action.type, action.new_item))
+    print("action: {} {} \n".format(action.type, action.new_item))
 
 def parse(input):
     # fill actions and gotos
@@ -72,11 +72,12 @@ def parse(input):
 
     stack.append("0")
 
+    # get actual token (the first in the input)
+    input_token = str(tokens.pop()[1])
     while not(accepted) and not(error):
         # get stack peek
         actual_item = str(stack[-1])
-        # get actual token (the first in the input)
-        input_token = str(tokens.pop()[1])
+        
         # get action object
         action = actions.get(actual_item).get(input_token)
         
@@ -85,10 +86,11 @@ def parse(input):
             error = True
         else:
             if action.type == "shift":
-                symbols.push(input_token)
-                stack.push(action.new_item)
+                symbols.append(input_token)
+                stack.append(action.new_item)
 
-                display(stack, symbols, input_token, action)
+                # get actual token (the first in the input)
+                input_token = str(tokens.pop()[1])
             elif action.type == "reduce":
                 prod_length = list(productions[str(action.new_item)])[0]
                 prod_head = productions[str(action.new_item)][prod_length]
@@ -97,11 +99,14 @@ def parse(input):
                     stack.pop()
                     symbols.pop()
 
-                symbols.push(str(prod_head))
+                symbols.append(str(prod_head))
+                print("Antes de Goto: ")
+                display(stack, symbols, input_token, action)
 
                 goto_result = gotos.get(str(stack[-1])).get(str(symbols[-1]))
-                stack.push(str(goto_result))
+                stack.append(str(goto_result))
 
+                print("Despues de Goto: ")
                 display(stack, symbols, input_token, action)
             elif action.type == "accepted":
                 accepted = True

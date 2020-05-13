@@ -6,10 +6,10 @@ import lexer
 
 # reserved words
 PROGRAM     = 'program'
-CONST       = 'CONST'
-VAR         = 'VAR'
-BEGIN       = 'BEGIN'
-END         = 'END'
+CONST       = 'const'
+VAR         = 'var'
+BEGIN       = 'begin'
+END         = 'end'
 FUNCTION    = 'FUNCTION'
 WHILE       = 'WHILE'
 DO          = 'DO'
@@ -21,8 +21,8 @@ DOWNTO      = 'DOWNTO'
 IF          = 'IF'
 THEN        = 'THEN'
 ELSE        = 'ELSE'
-WRITELN     = 'WRITELN'
-READLN      = 'READLN'
+WRITELN     = 'writeln'
+READLN      = 'readln'
 NOT         = 'NOT'
 OR          = 'OR'
 DIV         = 'DIV'
@@ -31,12 +31,12 @@ AND         = 'AND'
 
 # symbols
 ASSIGN      = 'ASSIGN'
-COLON       = 'COLON'
-SEMI        = 'SEMI'
-COMMA       = 'COMMA'
-DOT         = 'DOT'
-LPAREN      = 'LPAREN'
-RPAREN      = 'RPAREN'
+COLON       = '.'
+SEMI        = ';'
+COMMA       = ','
+DOT         = '.'
+LPAREN      = '('
+RPAREN      = ')'
 
 # symbols for operations
 EQUAL       = 'EQUAL'
@@ -53,14 +53,14 @@ DIVIDE      = 'DIVIDE'
 # types
 INTEGER     = 'INTEGER'
 REAL        = 'REAL'
-STRING      = 'STRING'
+STRING      = 'string'
 BOOLEAN     = 'BOOLEAN'
 TRUE        = 'TRUE'
 FALSE       = 'FALSE'
 #E           = 'E'
 
 # identifiers
-ID          = 'ID'
+ID          = 'identifier'
 
 
 # regular expressions for tokens
