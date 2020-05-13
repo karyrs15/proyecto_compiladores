@@ -1,10 +1,11 @@
 import sys
 import csv
 import lexer 
+import productions_dict
 
 class Action:
     def __init__(self, type, new_item):
-        self.tye = type
+        self.type = type
         self.new_item = new_item
 
 def loadActionsTable():
@@ -24,7 +25,8 @@ def loadActionsTable():
             aux = {row[1] : action}
             actions[row[0]].update(aux)
 
-    print(actions)
+    # print(actions)
+    return actions
     
 def loadGoToTable():
     gotos = {}
@@ -41,10 +43,46 @@ def loadGoToTable():
             aux = {row[1] : row[2]}
             gotos[row[0]].update(aux)
 
-    print(gotos)
+    # print(gotos)
+    return gotos
 
-def parse():
-    pass
+def parse(input):
+    # fill actions and gotos
+    actions = loadActionsTable()
+    gotos = loadGoToTable()
+    productions = productions_dict.productions
+
+    # call lexer function
+    tokens = lexer.lex(input, lexer.lex_tokens.token_expressions)
+    # add $ at the end of input
+    tokens.append(("$", "$"))
+    # reverse tokens order for easier input reading
+    tokens.reverse()
+
+    stack = []
+    symbols = []
+    accepted = False
+    error = False
+
+    stack.append("0")
+    
+    # print(tokens)
+    # ele = tokens.pop()
+    # print("Pop: ", ele)
+    # print(tokens)
+    # print("value: ", ele[1])
+
+    # print(actions["4"]["."].type)
+    # print(gotos)
+
+    # print(productions[1])
+
+    # while not(accepted) and not(error):
+    #     actual_item = stack[-1]
+
+                
+
+    
 
 def main():
     if len(sys.argv) != 2:
@@ -57,13 +95,10 @@ def main():
     file.close()
     # change all file content to lowercase for tokenize
     input_code = input_code.lower()
-    # call lexer function
-    tokens = lexer.lex(input_code, lexer.lex_tokens.token_expressions)
-    # print list of tokens
-    for token in tokens:
-        print(token)
+    parse(input_code)
+
 
 if __name__ == '__main__':
-    # main()
-    loadActionsTable()
+    main()
+    # loadActionsTable()
     # loadGoToTable()
