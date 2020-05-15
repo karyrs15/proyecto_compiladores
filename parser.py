@@ -80,12 +80,12 @@ def parse(input):
         
         # get action object
         action = actions.get(actual_item).get(input_token)
-        
-        display(stack, symbols, input_token, action)
         if action == None:
             error = True
         else:
             if action.type == "shift":
+                display(stack, symbols, input_token, action)
+                
                 symbols.append(input_token)
                 stack.append(action.new_item)
 
@@ -100,6 +100,7 @@ def parse(input):
                     symbols.pop()
 
                 symbols.append(str(prod_head))
+                
                 print("Antes de Goto: ")
                 display(stack, symbols, input_token, action)
 
@@ -108,6 +109,8 @@ def parse(input):
 
                 print("Despues de Goto: ")
                 display(stack, symbols, input_token, action)
+
+                input_token = str(tokens.pop()[1])
             elif action.type == "accepted":
                 accepted = True
 
