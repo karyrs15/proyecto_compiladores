@@ -110,14 +110,14 @@ def parse(input):
                 print("Despues de Goto: ")
                 display(stack, symbols, input_token, action)
 
-                input_token = str(tokens.pop()[1])
+                #input_token = str(tokens.pop()[1])
             elif action.type == "accepted":
                 accepted = True
 
     if accepted:
         print("ACCEPTED")
     else:
-        print("ERROR")
+        print("Error in item: {} with token: {}".format(actual_item, input_token))
                 
 
 def main():

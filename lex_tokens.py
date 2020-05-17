@@ -31,7 +31,7 @@ AND         = 'and'
 
 # symbols
 ASSIGN      = ':='
-COLON       = '.'
+COLON       = ':'
 SEMI        = ';'
 COMMA       = ','
 DOT         = '.'
