@@ -2,6 +2,7 @@
 Proyecto para clase Diseño de compiladores
 Compilador de Pascal
 
+Lexer
 Para ejecutar tests:
 
 ```
@@ -12,4 +13,12 @@ Para ejecutar lexer con input file:
 
 ```
 python lexer.py filename
+```
+
+Parser
+
+Para ejecutar parser con input file:
+
+```
+python parser.py filename
 ```

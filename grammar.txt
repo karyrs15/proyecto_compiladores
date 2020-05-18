@@ -50,7 +50,7 @@ structured-statement -> repetitive-statement
 structured-statement -> conditional-statement
 compound-statement -> begin statement-sequence end .
 repetitive-statement -> while-statement
-repetitive-statement -> repeat-stateexpressionment
+repetitive-statement -> repeat-statement
 repetitive-statement -> for-statement
 while-statement -> while expression do statement
 repeat-statement -> repeat statement-sequence until expression

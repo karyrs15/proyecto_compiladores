@@ -1,3 +1,6 @@
+'''
+    Autor: Karina Reyes 
+'''
 import sys
 import csv
 import lexer 
@@ -11,7 +14,7 @@ class Action:
 def loadActionsTable():
     actions = {}
 
-    for i in range(148):
+    for i in range(152):
         actions[str(i)] = {}
 
     with open("./data/actions.csv") as csvfile:
@@ -31,7 +34,7 @@ def loadActionsTable():
 def loadGoToTable():
     gotos = {}
 
-    for i in range(147):
+    for i in range(151):
         gotos[str(i)] = {}
 
     with open("./data/gotos.csv") as csvfile:
@@ -136,5 +139,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    # loadActionsTable()
-    # loadGoToTable()
